@@ -56,6 +56,7 @@ gulp.task('js', function () {
         presets: ['env']
    }))
     .pipe(concat('main.js'))// объеденяем все собственные скрипты в одном файле
+    .pipe(uglify())// сжимаем
     .pipe(gulp.dest('dist/vendor/js'))// переносим в продакшен
     .pipe(browserSync.reload({stream: true}));// Обновляем страницу при изменении
 });
@@ -69,26 +70,7 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
   });
 });
 
-gulp.task('scripts', function() {
-  return gulp.src('src/libs/**/dist/*.min.js')// Берем все необходимые библиотеки
-    .pipe(sourcemaps.init())
-    .pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
-    .pipe(uglify()) // Сжимаем JS файл
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/vendor/js')); // Выгружаем в папку dist/vendor/js
-});
-
-gulp.task('css-libs', ['sass'], function() {
-  return gulp.src('src/sass/libs.sass') // Выбираем файл для минификации
-    .pipe(sourcemaps.init())
-    .pipe(cssnano()) // Сжимаем
-    .pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
-    .pipe(sass())// Преобразуем Sass в CSS посредством gulp-sass
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/vendor/css')); // Выгружаем в папку dist/vendor/css
-});
-
-gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'], function() {
+gulp.task('watch', ['browser-sync'], function() {
   gulp.watch(['src/sass/**/*.scss', 'src/sass/**/*.sass'], ['sass']); // Наблюдение за sass файлами в папке sass
   // gulp.watch('src/less/**/*.less', ['less']); // Наблюдение за sass файлами в папке sass
   gulp.watch('src/pug/**/*.pug', ['pug']); // Наблюдение за pug файлами в папке pug
@@ -110,7 +92,7 @@ gulp.task('img', function() {
     .pipe(gulp.dest('dist/assets/img')); // Выгружаем на продакшен
 });
 
-gulp.task('build', ['clean', 'img', 'pug', 'sass', 'js', 'scripts'], function() {
+gulp.task('build', ['clean', 'img', 'pug', 'sass', 'js'], function() {
   gulp.src('src/assets/**/*') // Переносим assets в котором лежат картинки шрифты и т.п. активы продакшен
     .pipe(gulp.dest('dist/assets'));
   gulp.src('src/libs/**/*')
