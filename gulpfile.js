@@ -14,7 +14,8 @@ var gulp         = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),// Подключаем библиотеку для автоматического добавления префиксов
     sourcemaps   = require('gulp-sourcemaps'),
     wait         = require('gulp-wait'),// пакет чтобы поставить ожидание
-    plumber      = require('gulp-plumber');
+    plumber      = require('gulp-plumber'),
+    babel        = require('gulp-babel');
 
 
 // gulp.task('less', function(){ // Создаем таск less
@@ -51,9 +52,9 @@ gulp.task('pug', function(){
 
 gulp.task('js', function () {
   return gulp.src('src/js/**/*.js')
-  //  .pipe(babel({// из es6 в es5
-  //       presets: ['env']
-  //  }))
+   .pipe(babel({// из es6 в es5
+        presets: ['env']
+   }))
     .pipe(concat('main.js'))// объеденяем все собственные скрипты в одном файле
     .pipe(gulp.dest('dist/vendor/js'))// переносим в продакшен
     .pipe(browserSync.reload({stream: true}));// Обновляем страницу при изменении
@@ -112,6 +113,8 @@ gulp.task('img', function() {
 gulp.task('build', ['clean', 'img', 'pug', 'sass', 'js', 'scripts'], function() {
   gulp.src('src/assets/**/*') // Переносим assets в котором лежат картинки шрифты и т.п. активы продакшен
     .pipe(gulp.dest('dist/assets'));
+  gulp.src('src/libs/**/*')
+    .pipe(gulp.dest('dist/vendor/libs'));
 });
 
 gulp.task('clear', function () {
