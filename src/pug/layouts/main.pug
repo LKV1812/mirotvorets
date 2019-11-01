@@ -1,3 +1,4 @@
+include ../mixins/mixins.pug
 block variables
 
 <!DOCTYPE html>
@@ -8,5 +9,8 @@ html(lang="ru")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title #{title}
   body
-    include ../modules/header.pug
+    include ../sections/header.pug
+
     block content
+
+    include ../sections/footer.pug
