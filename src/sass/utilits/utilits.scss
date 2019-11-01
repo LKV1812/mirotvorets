@@ -1,0 +1,18 @@
+body {
+  font-family: 'Open Sans', 'Montserrat', 'nunito';
+}
+
+img {
+  vertical-align:bottom;
+}
+
+.flex-cont {
+  display: flex;
+  align-items: center;
+}
+
+.flex-cont-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

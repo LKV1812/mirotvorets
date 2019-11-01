@@ -34,9 +34,9 @@ gulp.task('sass', function(){ // Создаем таск Sass
   return gulp.src(['src/sass/**/*.scss', 'src/sass/**/*.sass', '!src/sass/**/_*.sass', '!src/sass/**/_*.scss', '!src/sass/libs.sass']) // Берем источник
     .pipe(sourcemaps.init())
     .pipe(wait(500))// ставим задержку выполнения тасков, чтобы все sass успели прогрузится иначе могут начаться проблемы с @import sass файлов
-    .pipe(sass().on('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
-    .pipe(sourcemaps.write())
+    .pipe(sass().on("error", notify.onError())) // Преобразуем Sass в CSS посредством gulp-sass
     .pipe(cssnano()) // Сжимаем
+    .pipe(sourcemaps.write())
     .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
     .pipe(gulp.dest('dist/assets/css')) // Выгружаем результата в папку dist/assets/css
     .pipe(browserSync.reload({stream: true})); // Обновляем CSS на странице при изменении
@@ -124,7 +124,7 @@ gulp.task('img', function() {
     .pipe(gulp.dest('dist/assets/img')); // Выгружаем на продакшен
 });
 
-gulp.task('build', ['clean', 'img', 'pug', 'sass', 'js'], function() {
+gulp.task('build', ['img', 'pug', 'sass', 'js', 'clean'], function() {
   gulp.src('src/assets/**/*') // Переносим assets в котором лежат картинки шрифты и т.п. активы продакшен
     .pipe(gulp.dest('dist/assets'));
   gulp.src('src/libs/**/*')
