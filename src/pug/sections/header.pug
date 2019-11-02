@@ -1,3 +1,5 @@
+include ../mixins/mixins.pug
+
 header.header
   .container
     .row
@@ -5,4 +7,7 @@ header.header
         .img-wrap-header
           img.img(src="assets/img/logo/logo.png")
         span.name-company Миротворец
-      .col-lg-8 Десять колонок
+      .col-lg-6.flex-cont
+        +nav([{title:'главная', link:'#'}, {title:'о нас', link:'#'}, {title:'о реабилитации', link:'#'}, {title:'контакты', link:'#'}, {title:'еще ссылка', link:'#'}])
+      .col-lg-2
+        +button-oval('кнопка')

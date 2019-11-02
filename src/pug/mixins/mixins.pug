@@ -1,0 +1,10 @@
+mixin nav(nav)
+  nav.nav
+    each item in nav
+      a.nav__link(href= item.link)= item.title
+
+mixin button-oval(text)
+  a(href="#" class="button-oval")= text
+
+mixin button-type-a(text)
+  a(href="#" class="button-type-a")= text

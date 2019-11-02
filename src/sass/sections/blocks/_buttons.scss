@@ -1,0 +1,41 @@
+.button-oval {
+  display: inline-block;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 12px;
+  padding-bottom: 10px;
+  border: none;
+  border-radius: 35px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #bcda5c;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #789128;
+    transition: .2s;
+  }
+}
+
+.button-type-a {
+  display: inline-block;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 24px;
+  padding-bottom: 20px;
+  border: none;
+  border-radius: 7px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #99c50a;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #789128;
+    transition: .2s;
+  }
+}
