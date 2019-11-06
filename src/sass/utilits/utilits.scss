@@ -58,6 +58,14 @@ a {
   padding-left: 105px;
 }
 
+.pl-123 {
+  padding-left: 123px;
+}
+
+.pr-123 {
+  padding-right: 123px;
+}
+
 .flex-cont {
   display: flex;
 }
@@ -95,6 +103,14 @@ a {
 .text {
   padding-bottom: 15px;
   color: #515151;
-  font-size: 19;
+  font-size: 19px;
   line-height: 1.7;
+
+  &--light-coloured {
+    color: #606060;
+  }
+
+  &--small {
+    font-size: 17px;
+  }
 }
