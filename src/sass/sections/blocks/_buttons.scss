@@ -81,3 +81,23 @@
     transition: .2s;
   }
 }
+
+.button-type-d {
+  display: inline-block;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 17px;
+  padding-bottom: 15px;
+  border: 1px solid rgb(81, 81, 81);
+  border-radius: 9px;
+  color: #515151;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #dceca4;
+    transition: .2s;
+  }
+}
