@@ -115,12 +115,12 @@ gulp.task('clean', function() {
 
 gulp.task('img', function() {
   return gulp.src('src/img/**/*') // Берем все изображения из src
-    .pipe(cache(imagemin({  // Сжимаем их с наилучшими настройками с учетом кеширования
+    .pipe(imagemin({  // Сжимаем их с наилучшими настройками с учетом кеширования
       interlaced: true,
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
-    })))
+    }))
     .pipe(gulp.dest('dist/assets/img')); // Выгружаем на продакшен
 });
 

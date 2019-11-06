@@ -1,19 +1,38 @@
 .container
-  .flex-cont-between.pt-130.general-tab-wrapper-border-bottom
-    .tabs.tabs--active
+  #tabs-wrap.flex-cont-between.pt-130.general-tab-wrapper-border-bottom
+    .tabs(data-tab-1)
       .tabs__icon-circle.tabs__icon-circle--active 1
       .tabs__title С чего начать
-    .tabs
+    .tabs(data-tab-2)
       .tabs__icon-circle 2
       .tabs__title Путь восстановления
-    .tabs
+    .tabs(data-tab-3)
       .tabs__icon-circle 3
       .tabs__title Новая жизнь
-  .row.align-items-center.pt-65.pb-75
-    .col-lg-3
-      .tab-description-icon-wrap
-        include ../../assets/svg/glasses.svg
-    .col-lg-9.align-self-start.pl-105
-      h3.subtitle-type-b.ml-25 Какой-то подзаголовок
-      p.text
-        |Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum autem, consequuntur ex at cum doloremque tempore aut molestias quasi numquam quisquam eum asperiores repellat ratione enim eaque. Odit, iure?
+  #tab-content-1.section-toggle.section-toggle--active
+    .row.align-items-center.pt-65.pb-75
+      .col-lg-3
+        .tab-description-icon-wrap
+          include ../../assets/svg/glasses.svg
+      .col-lg-9.align-self-start.pl-105
+        h3.subtitle-type-b.ml-25 Какой-то подзаголовок
+        p.text
+          |Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum autem, consequuntur ex at cum doloremque tempore aut molestias quasi numquam quisquam eum asperiores repellat ratione enim eaque. Odit, iure?
+  #tab-content-2.section-toggle
+    .row.align-items-center.pt-65.pb-75
+      .col-lg-3
+        .tab-description-icon-wrap
+          include ../../assets/svg/services.svg
+      .col-lg-9.align-self-start.pl-105
+        h3.subtitle-type-b.ml-25 Какой-то подзаголовок - 2
+        p.text
+          |Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum autem, consequuntur ex at cum doloremque tempore aut molestias quasi numquam quisquam eum asperiores repellat ratione enim eaque. Odit, iure?
+  #tab-content-3.section-toggle
+    .row.align-items-center.pt-65.pb-75
+      .col-lg-3
+        .tab-description-icon-wrap
+          include ../../assets/svg/sun.svg
+      .col-lg-9.align-self-start.pl-105
+        h3.subtitle-type-b.ml-25 Какой-то подзаголовок - 3
+        p.text
+          |Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum autem, consequuntur ex at cum doloremque tempore aut molestias quasi numquam quisquam eum asperiores repellat ratione enim eaque. Odit, iure?
