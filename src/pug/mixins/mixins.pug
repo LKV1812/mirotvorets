@@ -17,3 +17,18 @@ mixin button-type-c(text)
 
 mixin button-type-d(text)
   a(href="#" class="button-type-d")= text
+
+mixin card(numberPicture, titleHeader, cardText, loadPercentage, daysAweek, link)
+  .card
+    div(class="card__header-bg card__header-bg--picture-"+numberPicture)
+      .label-new
+    .card__content
+      h4.card__title #{titleHeader}
+      p.card__text #{cardText}
+      .loading-scale
+        .loading-scale__fill
+      .article-details
+        p.article-details__text #{loadPercentage}% Времени
+        p.article-details__text #{daysAweek} дней в неделю
+      .full-article
+        a(href= link).full-article__link Читать дальше
