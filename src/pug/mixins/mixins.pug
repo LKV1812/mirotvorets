@@ -32,3 +32,8 @@ mixin card(numberPicture, titleHeader, cardText, loadPercentage, daysAweek, link
         p.article-details__text #{daysAweek} дней в неделю
       .full-article
         a(href= link).full-article__link Читать дальше
+
+mixin speech(title, text)
+  .speech
+    h4.speech__title #{title}
+    p.speech__text #{text}
