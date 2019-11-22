@@ -1,0 +1,18 @@
+extends ../layouts/main.pug
+
+block variables
+  - var title= "Раздача питания"
+
+block content
+  include ../sections/slider.pug
+  .bg-color-type-a
+    .container
+      .row.align-items-center.pt-65
+        .col-lg-4
+          .img-wrap-radius
+            img(src="assets/img/card-bg/2.jpg", alt="")
+        .col-lg-8
+          h3.subtitle-type-b Точки раздачи питания:
+          p.text.text--light-coloured
+            | Каждый день, в определенное время, мы раздаем еду обездоленным, неимущим людям. Со временем люди открываются, идут на контакт, у некоторых появляется желание иметь полноценную жизнь, стать признанным  в обществе, полноправным гражданином, и просто –счастливым человеком. Всем желающим мы помогаем попасть в реабилитационные центра либо восстанавливающие сообщества, помогаем восстановить документы и вернуться к полноценной жизни.
+  include ../sections/footer-content.pug

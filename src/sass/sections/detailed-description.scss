@@ -37,3 +37,14 @@
   color: #515151;
   font-weight: 600;
 }
+
+.detailed-description__list-wrap {
+  display: none;
+  margin: 0;
+  padding-top: 0;
+  padding-left: 18px;
+}
+
+.detailed-description__list {
+  list-style-type: decimal;
+}

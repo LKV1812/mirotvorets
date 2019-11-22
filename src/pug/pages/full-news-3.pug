@@ -1,0 +1,18 @@
+extends ../layouts/main.pug
+
+block variables
+  - var title= "Наши партнеры"
+
+block content
+  include ../sections/slider.pug
+  .bg-color-type-a
+    .container
+      .row.align-items-center.pt-65
+        .col-lg-4
+          .img-wrap-radius
+            img(src="assets/img/card-bg/3.jpg", alt="")
+        .col-lg-8
+          h3.subtitle-type-b Наши партнеры:
+          p.text.text--light-coloured
+            | Благодарим за помощь в строительстве и обустройстве дома! Благодарим за помощь продуктами питания! Благодарим за помощь одеждой и обувью! Благодарим за помощь нашим детям игрушками, одеждой, обувью, праздничными аксессуарами!
+  include ../sections/footer-content.pug

@@ -15,8 +15,8 @@ mixin button-type-b(text)
 mixin button-type-c(text)
   a(href="#" class="button-type-c")= text
 
-mixin button-type-d(text)
-  a(href="#" class="button-type-d")= text
+mixin button-type-d(text, link)
+  a(href= link class="button-type-d" target="_BLANK")= text
 
 mixin card(numberPicture, titleHeader, cardText, loadPercentage, daysAweek, link)
   .card
@@ -31,7 +31,22 @@ mixin card(numberPicture, titleHeader, cardText, loadPercentage, daysAweek, link
         p.article-details__text #{loadPercentage}% Времени
         p.article-details__text #{daysAweek} дней в неделю
       .full-article
-        a(href= link).full-article__link Читать дальше
+        a(href= link target="_BLANK").full-article__link Читать дальше
+
+mixin card-horizontal(numberPicture, titleHeader, cardText, loadPercentage, daysAweek, link)
+  .card-horizontal
+    div(class="card-horizontal__header-bg card-horizontal__header-bg--picture-"+numberPicture)
+      .label-new
+    .card-horizontal__content
+      h4.card__title #{titleHeader}
+      p.card__text #{cardText}
+      .loading-scale
+        .loading-scale__fill
+      .article-details
+        p.article-details__text #{loadPercentage}% Времени
+        p.article-details__text #{daysAweek} дней в неделю
+      .full-article
+        a(href= link target="_BLANK").full-article__link Читать дальше
 
 mixin speech(title, text)
   .speech
