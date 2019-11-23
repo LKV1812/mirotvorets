@@ -32,13 +32,14 @@ var gulp         = require('gulp'),
 
 gulp.task('sass', function(){ // Создаем таск Sass
   return gulp.src(['src/sass/**/*.scss', 'src/sass/**/*.sass', '!src/sass/**/_*.sass', '!src/sass/**/_*.scss', '!src/sass/libs.sass']) // Берем источник
-  .pipe(sourcemaps.init())
-  .pipe(sass().on("error", notify.onError())) // Преобразуем Sass в CSS посредством gulp-sass
-  .pipe(cssnano()) // Сжимаем
-  .pipe(sourcemaps.write())
-  .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
-  .pipe(gulp.dest('dist/assets/css')) // Выгружаем результата в папку dist/assets/css
-  .pipe(browserSync.reload({stream: true})); // Обновляем CSS на странице при изменении
+    .pipe(sourcemaps.init())
+    .pipe(wait(500))// ставим задержку выполнения тасков, чтобы все sass успели прогрузится иначе могут начаться проблемы с @import sass файлов
+    .pipe(sass().on("error", notify.onError())) // Преобразуем Sass в CSS посредством gulp-sass
+    .pipe(cssnano()) // Сжимаем
+    .pipe(sourcemaps.write())
+    .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
+    .pipe(gulp.dest('dist/assets/css')) // Выгружаем результата в папку dist/assets/css
+    .pipe(browserSync.reload({stream: true})); // Обновляем CSS на странице при изменении
 });
 
 gulp.task('pug', function(){

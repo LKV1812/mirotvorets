@@ -10,10 +10,10 @@ mixin button-type-a(text)
   a(href="#" class="button-type-a")= text
 
 mixin button-type-b(text)
-  a(href="#" class="button-type-b")= text
+  input(type="button" class="button-type-b" id="buttonTypeB" value= text)
 
 mixin button-type-c(text)
-  a(href="#" class="button-type-c")= text
+  input(type="button" id="buttonTypeC" class="button-type-c" value= text)
 
 mixin button-type-d(text, link)
   a(href= link class="button-type-d" target="_BLANK")= text
