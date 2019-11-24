@@ -17,7 +17,8 @@ var gulp         = require('gulp'),
     wait         = require('gulp-wait'),// пакет чтобы поставить ожидание
     plumber      = require('gulp-plumber'),
     notify       = require('gulp-notify'),
-    babel        = require('gulp-babel');
+    babel        = require('gulp-babel'),
+    runSequence  = require("run-sequence");
 
 
 // gulp.task('less', function(){ // Создаем таск less
@@ -36,8 +37,8 @@ gulp.task('sass', function(){ // Создаем таск Sass
     .pipe(wait(500))// ставим задержку выполнения тасков, чтобы все sass успели прогрузится иначе могут начаться проблемы с @import sass файлов
     .pipe(sass().on("error", notify.onError())) // Преобразуем Sass в CSS посредством gulp-sass
     .pipe(cssnano()) // Сжимаем
-    .pipe(sourcemaps.write())
     .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/assets/css')) // Выгружаем результата в папку dist/assets/css
     .pipe(browserSync.reload({stream: true})); // Обновляем CSS на странице при изменении
 });
@@ -84,9 +85,9 @@ gulp.task('pug', function(){
 
 gulp.task('js', function () {
   return gulp.src('src/js/**/*.js')
-   .pipe(babel({// из es6 в es5
-        presets: ['env']
-   }))
+    .pipe(babel({// из es6 в es5
+      presets: ['env']
+    }))
     .pipe(concat('main.js'))// объеденяем все собственные скрипты в одном файле
     .pipe(uglify())// сжимаем
     .pipe(gulp.dest('dist/assets/js'))// переносим в продакшен
@@ -123,18 +124,51 @@ gulp.task('img', function() {
     }))
     .pipe(gulp.dest('dist/assets/img')); // Выгружаем на продакшен
 });
+gulp.task('default', function(callback){
+  runSequence(
+    'build',
+    ['watch'],
+    callback
+  );
+});
 
-gulp.task('build', ['img', 'pug', 'sass', 'js', 'clean'], function() {
+gulp.task('build', function(callback) {
+  runSequence(
+    'clean',
+    'img',
+    ['pug', 'sass', 'js'],
+    callback
+  );
+
   gulp.src('src/assets/**/*') // Переносим assets в котором лежат картинки шрифты и т.п. активы продакшен
     .pipe(gulp.dest('dist/assets'));
   gulp.src('src/libs/**/*')
     .pipe(gulp.dest('dist/vendor/libs'));
   gulp.src('src/php/**/*') // Переносим assets в котором лежат картинки шрифты и т.п. активы продакшен
-    .pipe(gulp.dest('dist'));
+  .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clear', function () {
   return cache.clearAll();
 });
 
-gulp.task('default', ['build', 'watch']);
+// gulp.task('default', ['build', 'watch']);
+
+gulp.task('default', function(callback){
+  runSequence(
+    'build',
+    ['watch'],
+    callback
+  );
+});
+
+gulp.task("build-min", function(){
+  gulp.src(['dist/assets/css/*.css', '!dist/assets/libs.css']) // Берем источник
+    .pipe(cssnano()) // Сжимаем
+    .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
+    .pipe(gulp.dest('dist/assets/css')); // Выгружаем результата в папку dist/assets/css
+
+  gulp.src('src/js/**/*.js')
+    .pipe(uglify())// сжимаем
+    .pipe(gulp.dest('dist/assets/js'));// переносим в продакшен
+});
