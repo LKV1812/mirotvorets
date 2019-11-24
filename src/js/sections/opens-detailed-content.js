@@ -8,7 +8,9 @@
 
     let parent = this.parentNode;
     let previousSibling = parent.previousElementSibling;
-    previousSibling.style.height = "auto";
+
+    if(previousSibling.clientHeight == 115) previousSibling.style.height = "auto";
+    else previousSibling.style.height = 115 + "px";
 
   };
 
@@ -16,7 +18,9 @@
 
     let parent = this.parentNode;
     let previousSibling = parent.previousElementSibling;
-    previousSibling.style.height = "auto";
+
+    if(previousSibling.clientHeight == 115) previousSibling.style.height = "auto";
+    else previousSibling.style.height = 115 + "px";
 
   };
 

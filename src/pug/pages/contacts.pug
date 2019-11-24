@@ -1,0 +1,19 @@
+extends ../layouts/main.pug
+
+block variables
+  - var title= "Контакты"
+
+block content
+  include ../sections/slider.pug
+  .bg-color-type-a
+    .container
+      .row.align-items-center.pt-65
+        .col-lg-12
+          h3.subtitle-type-b Наши контакты:
+          p.text.text--light-coloured
+            | Адрес: г. Тюмень, ул. Революции, д. 89
+          p.text.text--light-coloured
+            | Телефон: 8-111-111-11-11
+          p.text.text--light-coloured
+            | Email: somemail@mirotvorets72.com
+  include ../sections/footer-content.pug

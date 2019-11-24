@@ -194,8 +194,14 @@ a {
 }
 
 .height-cont-115px {
+  transition: height .5s;
   height: 115px;
   overflow: hidden;
+}
+
+.height-auto {
+  height: auto;
+  transition: all 1s;
 }
 
 .img-wrap-radius {
