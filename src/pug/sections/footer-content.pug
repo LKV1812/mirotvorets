@@ -1,14 +1,15 @@
 footer.footer
   .container
     .row
-      .col-lg-4.flex-cont-center
-        .img-wrap-header
-          img.img(src="assets/img/logo/logo.png")
-        span.name-company Миротворец
+      .col-lg-4
+        a(href="index.html").flex-cont-center
+          .img-wrap-header
+            img.img(src="assets/img/logo/logo.png")
+          span.name-company Миротворец
       .col-lg-6.flex-cont-center
         +nav([{title:'главная', link:'index.html'}, {title:'о нас', link:'#restorative-community'}, {title:'о реабилитации', link:'#rehabilitation-map'}, {title:'контакты', link:'contacts.html'}, {title:'блог', link:'blog.html'}])
       .col-lg-2
-        +button-oval('кнопка')
+        .phone 8-911-111-11-11
 .container
   .row.justify-content-center
     .copyright Copyright &copy; 2014 - 2019 "АНО" Миротворец

@@ -6,8 +6,8 @@ mixin nav(nav)
 mixin button-oval(text)
   a(href="#" class="button-oval")= text
 
-mixin button-type-a(text)
-  a(href="#" class="button-type-a")= text
+mixin button-type-a(link, text)
+  a(href= link class="button-type-a" target="_BLANK")= text
 
 mixin button-type-b(text)
   input(type="button" class="button-type-b" id="buttonTypeB" value= text)
