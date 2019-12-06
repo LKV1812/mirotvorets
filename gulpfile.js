@@ -168,7 +168,7 @@ gulp.task("build-min", function(){
     .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
     .pipe(gulp.dest('dist/assets/css')); // Выгружаем результата в папку dist/assets/css
 
-  gulp.src('src/js/**/*.js')
-    .pipe(uglify())// сжимаем
-    .pipe(gulp.dest('dist/assets/js'));// переносим в продакшен
+  // gulp.src('src/js/**/*.js')
+  //   .pipe(uglify())// сжимаем
+  //   .pipe(gulp.dest('dist/assets/js'));// переносим в продакшен
 });
